@@ -1,0 +1,40 @@
+[build-system]
+requires = [ "setuptools>=61.0.0" ]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imagetomap"
+description = "Convert images to WorldBox maps"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Environment :: Console"
+]
+dependencies = [ "Pillow>=10.0.0" ]
+dynamic = [ "version" ]
+
+[project.optional-dependencies]
+speedup = [ "msgspec" ]
+
+[project.scripts]
+imagetomap = "imagetomap.__main__:main"
+
+[tool.setuptools]
+packages = [ "imagetomap" ]
+
+[tool.setuptools.dynamic.version]
+attr = "imagetomap.__version__"
+
+[tool.mypy]
+files = [ "imagetomap/" ]
+python_version = "3.8"
+show_column_numbers = true
+show_error_codes = true
+strict = true
